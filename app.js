@@ -1,21 +1,29 @@
+// IMPORTING ALL ES6 MODULES
+
 import express from 'express';
 import bodyParser from 'body-parser';
 import ejs from 'ejs';
 import fetch from 'node-fetch';
 import path from 'path';
 const __dirname = path.resolve();
-import mongoose from 'mongoose';
+import mongoose, { Collection } from 'mongoose';
 import findOrCreate from 'mongoose-findorcreate'
 
 
 const app = express()
 
+// ....................................................
+
 app.use(express.static(__dirname + "/public"))
 app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({ extended: true }))
 
+// ....................................................
+// MAKE A NEW MONGOOSE DATABASE
+
 mongoose.connect("mongodb://localhost:27017/pixelaDB", { useNewUrlParser: true })
 
+// DEFINE A NEW MONGOOSE SCHEMA
 
 const userSchema = new mongoose.Schema({
     username: String,
@@ -28,43 +36,12 @@ const userSchema = new mongoose.Schema({
     quantity: String
 })
 
-// const itemsSchema = {
-//     name: String
-// }
 
-// const listSchema = {
-//     name: String,
-//     items: [itemsSchema]
-// }
-
-// const List = mongoose.model("List", listSchema)
+// A NEW MONGOOSE MODEL
 
 const User = new mongoose.model("User", userSchema)
-    // const Item = mongoose.model("Item", itemsSchema)
 
-// const graph_id = req.body.graphID 
-// const graph_name = req.body.itemName
-// const graph_unit = req.body.graphUnit
-
-// const item1 = new Item({
-//     name: "Welcome to your todo-list!!"
-// })
-
-// const item2 = new Item({
-//     name: "Hit the + button to add a new item."
-// })
-
-// const item3 = new Item({
-//     name: "<-- Hit this to delete the item"
-// })
-
-// const defaultItems = [item1, item2, item3]
-
-
-
-
-
-
+// ROUTE SECTION
 
 
 app.get("/", function(req, res) {
@@ -72,9 +49,6 @@ app.get("/", function(req, res) {
 })
 
 app.post("/", function(req, res) {
-
-
-
 
     const username = req.body.username //dyanamic
     let token = req.body.token //dyanamic
@@ -85,7 +59,7 @@ app.post("/", function(req, res) {
     let type = req.body.type //dyanamic
     let quantity = req.body.quantity //dyanamic
 
-
+    // NEW DB COLLECTION
 
     const newUser = new User({
         username: req.body.username,
@@ -98,6 +72,8 @@ app.post("/", function(req, res) {
         quantity: quantity
 
     })
+
+    // A METHOD TO SAVE THE Collection
 
     newUser.save(function(err) {
         if (!err) {
@@ -121,6 +97,8 @@ app.post("/", function(req, res) {
     }
 
 
+    // FIND METHOD
+
     User.findOne({}, function(err, foundName) {
 
             let newID = foundName._id
@@ -133,7 +111,7 @@ app.post("/", function(req, res) {
 
                         res.render("logged", { thierName: foundName.username })
 
-                        // res.redirect("/")
+
 
                     } else {
 
@@ -226,6 +204,9 @@ app.post('/dashboard', function(req, res) {
 
     // const itemName = req.body.newItem
     // const listName = req.body.list
+
+
+
     const username = req.body.username //dyanamic
     let token = req.body.token
 
