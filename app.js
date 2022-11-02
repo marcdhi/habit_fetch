@@ -6,7 +6,7 @@ import ejs from 'ejs';
 import fetch from 'node-fetch';
 import path from 'path';
 const __dirname = path.resolve();
-import mongoose, { Collection } from 'mongoose';
+import mongoose from 'mongoose';
 import findOrCreate from 'mongoose-findorcreate'
 
 
