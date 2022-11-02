@@ -1,0 +1,105 @@
+html {
+    background-color: #E4E9FD;
+    background-image: -webkit-linear-gradient(80deg, #92ce88f1 50%, #cbd0e1 50%);
+    min-height: 1000px;
+    font-family: 'helvetica neue';
+}
+
+.box {
+    max-width: 400px;
+    margin: 50px auto;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+}
+
+#heading {
+    background-color: #92ce88f1;
+    text-align: center;
+}
+
+.topnav {
+    /* background-color: rgb(227, 219, 219); */
+    overflow: hidden;
+}
+
+.topnav a {
+    float: right;
+    color: #190505;
+    text-align: center;
+    padding: 14px 16px;
+    /* text-decoration: none; */
+    list-style: none;
+    font-size: 17px;
+}
+
+.topnav p {
+    float: center;
+    /* color: #f2f2f2; */
+    color: #ff0000;
+    list-style: none;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 45px;
+}
+
+.topnav a:hover {
+    background-color: rgb(214, 27, 27);
+    color: black;
+}
+
+.item {
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #F1F1F1;
+}
+
+.item:last-child {
+    border-bottom: 0;
+}
+
+form.item {
+    text-align: center;
+    margin-left: 20px;
+}
+
+button {
+    min-height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border-color: transparent;
+    background-color: #92ce88f1;
+    color: #fff;
+    font-size: 30px;
+    padding-bottom: 6px;
+    border-width: 0;
+}
+
+input[type="text"] {
+    text-align: center;
+    height: 60px;
+    top: 10px;
+    border: none;
+    background: transparent;
+    font-size: 20px;
+    font-weight: 200;
+    width: 313px;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    box-shadow: inset 0 -3px 0 0 #92ce88f1;
+}
+
+ ::placeholder {
+    color: grey;
+    opacity: 1;
+}
+
+footer {
+    color: white;
+    color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
